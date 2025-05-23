@@ -59,7 +59,7 @@ export default function useTerminal() {
 
     if (cmd === "resume") {
       const link = document.createElement('a');
-      link.href = '/resume.pdf';
+      link.href = '/portfolio-site/resume.pdf';
       link.download = 'Lari_Tsiuriumov_Resume.pdf';
       document.body.appendChild(link);
       link.click();
