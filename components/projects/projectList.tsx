@@ -7,7 +7,7 @@ import { ProjectCard } from './projectCard';
 const projects = [
   {
     title: "Zen Chain Habit Tracker",
-    images: ["/images/zen-chain-1.jpg", "/images/zen-chain-2.jpg"],
+    images: ["/portfolio-site/images/zen-chain-1.jpg", "/portfolio-site/images/zen-chain-2.jpg"],
     description: `
       A simple and helpful Telegram bot that lets users create and track habits through chat. 
       Users can add a habit, set a goal, and choose how often they want to work on it (daily, weekly, or monthly). 

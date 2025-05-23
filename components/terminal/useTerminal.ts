@@ -80,7 +80,7 @@ export default function useTerminal() {
       return;
     }
 
-    setHistory(prev => [...prev, `> ${cmd}`, (textCommands as any)[cmd]]);
+    setHistory(prev => [...prev, `> ${cmd}`, (textCommands as any)[cmd]]); // eslint-disable-line
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
