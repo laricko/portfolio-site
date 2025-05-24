@@ -4,11 +4,24 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 
 
-const aboutText = `
+const initText = `
   <p>Hello! I'm <strong>Lari Tsiuriumov</strong> a software engineer based in Moscow.</p>
-  <p>I specialize in building backend or full-stack applications using technologies like <span>Python, Django, Fastapi, React</span>.</p>
+  <p>I specialize in building backend or full-stack applications. I enjoy using technologies like <span>Python, Django, Fastapi, JS, TS, React, Next.</span>.</p>
   <p>I enjoy creating clean, efficient systems and love working with microservices, DDD, and cloud deployment.</p>
   <p>Type <code class="text-gray-400">help</code> to see interactive shell.</p>
+`
+
+
+const aboutText = `
+  <p>I studied Computer Science and Math and started working in 2020 as a Python developer.</p>
+  <p>I have hands-on experience across the entire Python ecosystem — from backend frameworks to DevOps tools.</p>
+  <p>Recently gained experience with frontend technologies, including JavaScript, TypeScript, React, Next.js, and more.</p>
+  <p class="mb-2">List of technologies I've used:</p>
+  <p><strong>Languages:</strong> Python, JavaScript, TypeScript</p>
+  <p><strong>Frameworks:</strong> Django, DRF, Flask, FastAPI, Aiohttp, React, Next.js</p>
+  <p><strong>Databases:</strong> PostgreSQL, MySQL, Redis, Elasticsearch, MongoDB, Amazon RDS</p>
+  <p><strong>Tools:</strong> Docker, Git, Linux, Nginx, Selenium, Celery, Kafka, RabbitMQ, AWS, CI/CD, Swagger, Pytest, ArgoCD, Grafana, Postman</p>
+  <p><strong>Skills:</strong> Microservices, REST API, TDD, DDD, Serverless, Debugging, Clean Architecture</p>
 `
 
 const helpText = `
@@ -39,7 +52,7 @@ const linksText = `
 
 export default function useTerminal() {
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<string[]>([aboutText,]);
+  const [history, setHistory] = useState<string[]>([initText,]);
 
   const handleCommand = (cmd: string) => {
     cmd = cmd.toLocaleLowerCase();
