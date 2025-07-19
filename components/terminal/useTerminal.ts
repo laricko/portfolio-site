@@ -16,7 +16,10 @@ const aboutText = `
   <p>I studied Computer Science and Math and started working in 2020 as a Python developer.</p>
   <p>I have hands-on experience across the entire Python ecosystem — from backend frameworks to DevOps tools.</p>
   <p>Recently gained experience with frontend technologies, including JavaScript, TypeScript, React, Next.js, and more.</p>
-  <p class="mb-2">List of technologies I've used:</p>
+  <p>At my last job, I worked on a platform for monitoring construction using drone data. I worked on the backend, wrote tests, and had to work with the frontend also.</p>
+  <p class="mb-2">Today I'm working on my own project.</p>
+
+  <p>List of technologies I've used:</p>
   <p><strong>Languages:</strong> Python, JavaScript, TypeScript</p>
   <p><strong>Frameworks:</strong> Django, DRF, Flask, FastAPI, Aiohttp, React, Next.js</p>
   <p><strong>Databases:</strong> PostgreSQL, MySQL, Redis, Elasticsearch, MongoDB, Amazon RDS</p>
