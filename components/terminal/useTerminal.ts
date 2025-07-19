@@ -6,8 +6,8 @@ import { useState } from "react";
 
 const initText = `
   <p>Hello! I'm <strong>Lari Tsiuriumov</strong> a software engineer based in Moscow.</p>
-  <p>I specialize in building backend or full-stack applications. I enjoy using technologies like <span>Python, Django, Fastapi, JS, TS, React, Next.</span>.</p>
-  <p>I enjoy creating clean, efficient systems and love working with microservices, DDD, and cloud deployment.</p>
+  <p>I specialize in building backend or full-stack applications. I enjoy using technologies like <span>Python, Fastapi, Django, Typescript, React, Next.</span>.</p>
+  <p>I create clean, efficient systems and love work with DDD, and cloud deployment.</p>
   <p>Type <code class="text-gray-400">help</code> to see interactive shell.</p>
 `
 
