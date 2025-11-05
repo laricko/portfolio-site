@@ -104,9 +104,6 @@ export default function About() {
   return (
     <div className="container mx-auto max-w-5xl space-y-10 py-16">
       <section className="space-y-4 text-center">
-        <Badge variant="secondary" className="mx-auto w-fit px-3 py-1 text-sm">
-          Behind the systems
-        </Badge>
         <div className="space-y-3">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">About</h1>
           <p className="text-base text-muted-foreground sm:text-lg">
@@ -140,6 +137,7 @@ export default function About() {
           </p>
         </CardContent>
       </Card>
+
 
       <Card>
         <CardHeader>
@@ -214,6 +212,19 @@ export default function About() {
           </ul>
         </CardContent>
       </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Education</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-muted-foreground">
+          <p className="text-sm">
+            Ростовский государственный экономический университет —
+            <span className="ml-1 font-medium">Прикладная математика и информатика</span>.
+          </p>
+        </CardContent>
+      </Card>
+
     </div>
   )
 }
