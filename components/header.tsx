@@ -9,47 +9,95 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { useSettings } from "@/components/settings-provider"
 import { useIsMobile } from "@/hooks/use-mobile"
-import shortProjects from "@/lib/projects-data"
+import { getCopy, getProjects } from "@/lib/translations"
 import Link from "next/link"
 import * as React from "react"
-
+import { Moon, Sun } from "lucide-react"
 
 export function Header() {
   const isMobile = useIsMobile()
+  const { language, setLanguage, theme, setTheme } = useSettings()
+  const copy = React.useMemo(() => getCopy(language), [language])
+  const projects = React.useMemo(() => getProjects(language), [language])
+
+  const handleLanguageChange = (value: string) => {
+    if (value === "en" || value === "ru") {
+      setLanguage(value)
+    }
+  }
+
+  const handleThemeChange = (value: string) => {
+    if (value === "light" || value === "dark") {
+      setTheme(value)
+    }
+  }
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap">
-
-        {/* Projects */}
+      <NavigationMenuList className="flex w-full flex-wrap items-center gap-2">
         <NavigationMenuItem>
-          <NavigationMenuTrigger href="/projects/">Projects</NavigationMenuTrigger>
+          <NavigationMenuTrigger href="/projects/">
+            {copy.navigation.projects}
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {shortProjects.map((project) => (
-                <ListItem key={project.title} href={project.href} title={project.title}>
-                  {project.description}
+              {projects.map((project) => (
+                <ListItem key={project.slug} href={`/projects/${project.slug}`} title={project.title}>
+                  {project.summary}
                 </ListItem>
               ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* About */}
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/about">About</Link>
+            <Link href="/about">{copy.navigation.about}</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
-        {/* Contact */}
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/contact">Contact</Link>
+            <Link href="/contact">{copy.navigation.contact}</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
+        <NavigationMenuItem className="ml-auto flex flex-wrap items-center gap-3 rounded-md border px-3 py-2 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-muted-foreground">{copy.navigation.languageLabel}</span>
+            <Select value={language} onValueChange={handleLanguageChange}>
+              <SelectTrigger className="w-[140px]" aria-label={copy.navigation.languageLabel}>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="ru">Русский</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-muted-foreground">{copy.navigation.themeLabel}</span>
+            <ToggleGroup
+              type="single"
+              value={theme}
+              onValueChange={handleThemeChange}
+              className="rounded-md border bg-background p-0"
+            >
+              <ToggleGroupItem value="light" aria-label={copy.navigation.light} className="gap-2 px-3 py-2 text-sm">
+                <Sun className="h-4 w-4" />
+                <span>{copy.navigation.light}</span>
+              </ToggleGroupItem>
+              <ToggleGroupItem value="dark" aria-label={copy.navigation.dark} className="gap-2 px-3 py-2 text-sm">
+                <Moon className="h-4 w-4" />
+                <span>{copy.navigation.dark}</span>
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   )
