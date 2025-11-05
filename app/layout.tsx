@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ilya Tsyuriumov — Backend engineer",
+  title: "Lari Tsyuriumov — Backend engineer",
   description:
-    "Portfolio of Ilya Tsyuriumov, a backend engineer focused on reliable Python services.",
+    "Portfolio of Lari Tsyuriumov, a backend engineer focused on reliable Python services.",
 };
 
 

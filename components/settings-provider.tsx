@@ -5,7 +5,7 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useReducer,
   type ReactNode,
 } from "react"
 
@@ -19,6 +19,17 @@ type SettingsContextValue = {
   setTheme: (theme: Theme) => void
 }
 
+type SettingsState = {
+  language: Language
+  theme: Theme
+  hasHydrated: boolean
+}
+
+type SettingsAction =
+  | { type: "hydrate"; language: Language; theme: Theme }
+  | { type: "setLanguage"; language: Language }
+  | { type: "setTheme"; theme: Theme }
+
 const SettingsContext = createContext<SettingsContextValue | undefined>(
   undefined,
 )
@@ -26,44 +37,74 @@ const SettingsContext = createContext<SettingsContextValue | undefined>(
 const LANGUAGE_STORAGE_KEY = "site-language"
 const THEME_STORAGE_KEY = "site-theme"
 
-export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window === "undefined") {
-      return "en"
-    }
+const initialState: SettingsState = {
+  language: "en",
+  theme: "light",
+  hasHydrated: false,
+}
 
+function settingsReducer(state: SettingsState, action: SettingsAction): SettingsState {
+  switch (action.type) {
+    case "hydrate":
+      return {
+        language: action.language,
+        theme: action.theme,
+        hasHydrated: true,
+      }
+    case "setLanguage":
+      return {
+        ...state,
+        language: action.language,
+      }
+    case "setTheme":
+      return {
+        ...state,
+        theme: action.theme,
+      }
+    default:
+      return state
+  }
+}
+
+export function SettingsProvider({ children }: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(settingsReducer, initialState)
+
+  useEffect(() => {
     const storedLanguage = localStorage.getItem(
       LANGUAGE_STORAGE_KEY,
     ) as Language | null
-    return storedLanguage === "ru" ? "ru" : "en"
-  })
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window === "undefined") {
-      return "light"
-    }
-
     const storedTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null
-    return storedTheme === "dark" ? "dark" : "light"
-  })
+
+    dispatch({
+      type: "hydrate",
+      language: storedLanguage === "ru" ? "ru" : "en",
+      theme: storedTheme === "dark" ? "dark" : "light",
+    })
+  }, [])
 
   useEffect(() => {
-    document.documentElement.setAttribute("lang", language)
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
-  }, [language])
+    if (!state.hasHydrated) return
+
+    document.documentElement.setAttribute("lang", state.language)
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, state.language)
+  }, [state.hasHydrated, state.language])
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark")
-    localStorage.setItem(THEME_STORAGE_KEY, theme)
-  }, [theme])
+    if (!state.hasHydrated) return
+
+    document.documentElement.classList.toggle("dark", state.theme === "dark")
+    localStorage.setItem(THEME_STORAGE_KEY, state.theme)
+  }, [state.hasHydrated, state.theme])
 
   const value = useMemo(
     () => ({
-      language,
-      setLanguage: setLanguageState,
-      theme,
-      setTheme: setThemeState,
+      language: state.language,
+      setLanguage: (lang: Language) =>
+        dispatch({ type: "setLanguage", language: lang }),
+      theme: state.theme,
+      setTheme: (theme: Theme) => dispatch({ type: "setTheme", theme }),
     }),
-    [language, theme],
+    [state.language, state.theme],
   )
 
   return (
