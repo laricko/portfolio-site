@@ -18,11 +18,11 @@ export const copy: Record<Language, Copy> = {
     home: {
       greeting: "Hi, I'm Lari.",
       introduction:
-        "I build Python backends for products that lean on clean data pipelines and predictable services.",
+        "Software engineer with 5 years of experience building full stack applications with Python and JavaScript.",
       highlight:
-        "Most of my work sits behind analytics dashboards, internal tooling, and marketplace platforms.",
+        "Primarily focused on backend development: REST APIs, data pipelines, internal tools, and services that just work.",
       secondary:
-        "This site collects a few notes on that work and the stack I rely on every day.",
+        "This site collects a few notes on that work and the stack I rely on every day. Go click around!",
     },
     about: {
       title: "About me",
@@ -179,11 +179,11 @@ export const copy: Record<Language, Copy> = {
     home: {
       greeting: "Привет, я Лари.",
       introduction:
-        "Занимаюсь бэкендом на Python: выстраиваю сервисы для аналитики, внутреннего софта и маркетплейсов.",
+        "Software engineer с 5-летним опытом разработки full stack приложений на Python и JavaScript.",
       highlight:
-        "Чаще всего мои задачи — это аккуратные пайплайны данных, очереди и сервисы, которые должны работать без сюрпризов.",
+        "В основном занимаюсь backend частью: REST API, дата-пайплайны, внутренние сервисы и инструменты, которые просто работают.",
       secondary:
-        "Здесь я собрал несколько примеров таких проектов и инструменты, на которые опираюсь.",
+        "Здесь я собрал несколько примеров таких проектов и инструменты, на которые опираюсь. Осмотритесь!",
     },
     about: {
       title: "Обо мне",

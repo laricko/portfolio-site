@@ -10,8 +10,9 @@ type ProjectPageProps = {
   params: { slug: string }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = rawProjects.find((item) => item.slug === params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+  const project = rawProjects.find((item) => item.slug === slug)
 
   if (!project) {
     notFound()

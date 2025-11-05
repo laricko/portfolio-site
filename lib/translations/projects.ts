@@ -5,11 +5,11 @@ export const projects: ProjectData[] = [
     slug: "microplatforma",
     title: {
       en: "Microplatforma",
-      ru: "Микроплатформа",
+      ru: "Microplatforma",
     },
     summary: {
-      en: "Internal developer platform that keeps analytics services catalogued and healthy.",
-      ru: "Внутренняя платформа, которая ведёт каталог аналитических сервисов и следит за их состоянием.",
+      en: "Internal developer platform for developer teams that keeps their services catalogued and managed.",
+      ru: "Внутренняя платформа для разработчиков, которая ведёт каталог сервисов и следит за их состоянием.",
     },
     overview: {
       en: "I helped build an internal hub that maps every analytics microservice, tracks their health, and keeps scorecards up to date.",
