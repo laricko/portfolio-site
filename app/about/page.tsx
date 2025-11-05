@@ -8,31 +8,86 @@ import {
 } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import {
-  Boxes,
-  Cloud,
+  Braces,
   Database,
-  Infinity as InfinityIcon,
-  Leaf,
   Layers,
-  RadioTower,
   ServerCog,
-  Ship,
-  Workflow,
-  Zap,
+  Wrench,
 } from "lucide-react"
 
 const techStack = [
-  { name: "Python", icon: InfinityIcon },
-  { name: "FastAPI", icon: Zap },
-  { name: "Django", icon: Layers },
-  { name: "PostgreSQL", icon: Database },
-  { name: "Redis", icon: Boxes },
-  { name: "Docker", icon: Ship },
-  { name: "Celery", icon: Leaf },
-  { name: "Kafka", icon: RadioTower },
-  { name: "GitHub Actions", icon: Workflow },
-  { name: "AWS", icon: Cloud },
-  { name: "Microservices", icon: ServerCog },
+  {
+    title: "Programming Languages",
+    icon: Braces,
+    items: ["Python", "Javascript", "Typescript"],
+  },
+  {
+    title: "Frameworks",
+    icon: Layers,
+    items: [
+      "Django",
+      "Django Rest Framework (DRF)",
+      "Flask",
+      "FastAPI",
+      "Aiohttp",
+      "ReactJs",
+      "NextJs",
+    ],
+  },
+  {
+    title: "Databases",
+    icon: Database,
+    items: [
+      "PostgreSQL",
+      "MySQL",
+      "Redis",
+      "Elasticsearch",
+      "MongoDB",
+      "Amazon RDS",
+    ],
+  },
+  {
+    title: "Core Tools",
+    icon: Wrench,
+    items: [
+      "RabbitMQ",
+      "Kafka",
+      "AWS (S3, ECR, EC2, Lambda and etc)",
+      "Sqlalchemy",
+      "Celery",
+      "Alembic",
+      "Selenium",
+      "Nginx",
+      "Git",
+      "Docker",
+      "Linux",
+      "CI/CD",
+      "Swagger",
+      "Asyncio",
+      "Jira",
+      "Pytest",
+      "Mock",
+      "ArgoCD",
+      "Grafana",
+      "Postman",
+    ],
+  },
+  {
+    title: "Methodologies",
+    icon: ServerCog,
+    items: [
+      "Microservices",
+      "REST API",
+      "Containerization",
+      "TDD",
+      "DDD",
+      "OOP",
+      "Stateless",
+      "Clean Architecture",
+      "Troubleshooting",
+      "Debugging",
+    ],
+  },
 ]
 
 const achievements = [
@@ -95,16 +150,21 @@ export default function About() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {techStack.map((tech) => (
-              <Badge
-                key={tech.name}
-                variant="secondary"
-                className="justify-start gap-2 px-4 py-2 text-sm"
-              >
-                <tech.icon className="h-4 w-4" aria-hidden="true" />
-                {tech.name}
-              </Badge>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {techStack.map((section) => (
+              <div key={section.title} className="space-y-3">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <section.icon className="h-4 w-4" aria-hidden="true" />
+                  {section.title}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {section.items.map((item) => (
+                    <Badge key={item} variant="secondary" className="px-3 py-1 text-xs">
+                      {item}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </CardContent>
