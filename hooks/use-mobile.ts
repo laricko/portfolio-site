@@ -1,54 +1,53 @@
-
 // /hooks/use-mobile.ts
 "use client"
 
-import { useCallback, useSyncExternalStore } from "react"
+import { useCallback, useRef, useSyncExternalStore } from "react"
 
 const noop = () => {}
 
-/**
- * Simple client-side hook to detect "mobile" viewport.
- * Default breakpoint is 768px (returns true for widths < 768).
- */
+type MQL = MediaQueryList & {
+  addListener?: (listener: (e: MediaQueryListEvent) => void) => void
+  removeListener?: (listener: (e: MediaQueryListEvent) => void) => void
+}
+
 export function useIsMobile(breakpoint = 768): boolean {
   const query = `(max-width: ${breakpoint - 1}px)`
+  const mqlRef = useRef<MQL | null>(null)
 
-  const subscribe = useCallback(
-    (onStoreChange: () => void) => {
-      if (typeof window === "undefined") {
-        return noop
-      }
-
-      const mql = window.matchMedia(query)
-      const handler = () => onStoreChange()
-
-      if (mql.addEventListener) {
-        mql.addEventListener("change", handler)
-      } else {
-        // fallback for older browsers
-        // @ts-expect-error - legacy API present on Safari < 14
-        mql.addListener(handler)
-      }
-
-      return () => {
-        if (mql.removeEventListener) {
-          mql.removeEventListener("change", handler)
-        } else {
-          // @ts-expect-error - legacy API present on Safari < 14
-          mql.removeListener(handler)
-        }
-      }
-    },
-    [query]
-  )
-
-  const getSnapshot = useCallback(() => {
-    if (typeof window === "undefined") {
-      return false
+  const getMql = useCallback((): MQL | null => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+      return null
     }
-    return window.matchMedia(query).matches
+    const current = mqlRef.current
+    if (!current || current.media !== query) {
+      mqlRef.current = window.matchMedia(query) as MQL
+    }
+    return mqlRef.current
   }, [query])
 
+  const subscribe = useCallback((onStoreChange: () => void) => {
+    const mql = getMql()
+    if (!mql) return noop
+
+    const handler = () => onStoreChange()
+
+    // Modern API
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handler)
+      return () => mql.removeEventListener?.("change", handler)
+    }
+
+    // Legacy Safari (<14)
+    mql.addListener?.(handler)
+    return () => mql.removeListener?.(handler)
+  }, [getMql])
+
+  const getSnapshot = useCallback(() => {
+    const mql = getMql()
+    return Boolean(mql?.matches)
+  }, [getMql])
+
+  // Server snapshot: always false to avoid SSR crashes; useSyncExternalStore handles hydration.
   const getServerSnapshot = useCallback(() => false, [])
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
