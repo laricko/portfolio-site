@@ -47,7 +47,6 @@ type ContactCopy = {
   resumeDescription: string
   resumeAction: string
   linksTitle: string
-  linksDescription: string
   emailTitle: string
   emailDescription: string
 }

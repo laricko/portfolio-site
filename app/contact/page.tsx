@@ -63,10 +63,8 @@ export default function Contact() {
       <Card>
         <CardHeader>
           <CardTitle>{contact.linksTitle}</CardTitle>
-          <CardDescription>{contact.linksDescription}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Separator />
           <div className="space-y-3">
             {copy.socialLinks.map((profile, index) => {
               const Icon = socialIcons[profile.icon]

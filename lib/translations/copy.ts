@@ -1,7 +1,7 @@
 import type { Language } from "@/components/settings-provider"
 
-import type { Copy } from "./types"
 import { socialLinks } from "./social-links"
+import type { Copy } from "./types"
 
 export const copy: Record<Language, Copy> = {
   en: {
@@ -24,71 +24,92 @@ export const copy: Record<Language, Copy> = {
       secondary:
         "This site collects a few notes on that work and the stack I rely on every day. Go click around!",
     },
+
+    // About page
     about: {
       title: "About me",
-      introHeading: "Background",
       lead: "A quick look at who I am and how I work.",
-      introBody: [
-        "I'm a senior backend engineer who moved from scripting admin tasks to shaping large Python services over the past five years.",
-        "I care about shipping code that the team can keep alive: clear boundaries, measured rollouts, and tests that catch what reviews miss.",
-      ],
+      // Intro section
+      introHeading: "Background",
       introDescription:
-        "How I arrived here and the kind of backend work I enjoy.",
+        "How it starts.",
+      introBody: [
+        "I'm a senior Software engineer who started learning computer science in 2018 and now designs large Python services over the past five years.",
+        "I care about code quality that the team can keep alive: clear boundaries, measured rollouts, and tests that catch what reviews miss.",
+      ],
+
+      // Stack section
       stackTitle: "Tools that stick",
       stackDescription:
         "These are the languages, frameworks, and services that usually end up in my toolbox.",
+
+      // Philosophy section
       philosophyTitle: "How I approach code",
       philosophyDescription:
-        "Principles I lean on when shaping services.",
+        "Principles I lean on when shaping services of backend.",
       philosophyBody: [
         "I lean on SOLID, DDD, and Clean Architecture to keep systems modular and readable.",
-        "A healthy test suite is non-negotiable—it lets us change things without holding our breath.",
+        "Love to write tests. Unit, integration, and end-to-end. They make change safer and smoother.",
       ],
-      achievementsTitle: "Recent wins",
+
+      // Achievements section
+      achievementsTitle: "Recent tasks",
       achievementsDescription:
-        "A handful of practical highlights from the last few projects.",
+        "Practical highlights from the last few projects.",
+      achievements: [
+        "Integrated payment providers like Sber, Tinkoff, and YooMoney.",
+        "Integrating with OpenAI's language model to generate user's content.",
+        "Working with database indexes and query plans to speed up slow SQL queries.",
+        "Put CI/CD pipelines in place for teams that had none.",
+        "Designed REST APIs across different microservices.",
+        "Refactor legacy code.",
+      ],
+
+      // Education section
       educationTitle: "Education",
       educationDetails:
-        "Rostov State University of Economics — Applied Mathematics and Informatics.",
-      achievements: [
-        "Integrated payment providers without downtime",
-        "Shaved minutes off heavy SQL by reworking queries and indexes",
-        "Put CI/CD pipelines in place for teams that had none",
-        "Raised test coverage with pragmatic API, integration, and end-to-end checks",
-        "Designed REST APIs and service boundaries for microservice rollouts",
-        "Led refactors that paid down messy legacy code",
-        "Set up queues and async workers for background jobs",
-      ],
+        "Rostov State University of Economics — Mathematics and Informatics.",
     },
+
+
+    // Contact Page
     contact: {
       badge: "Let's work together",
       title: "Contact",
       description:
-        "Planning a new build or straightening out an existing platform? I'm happy to talk through the backend side.",
+        "Planning a new build or joining an existing platform? I'm happy to talk through the backend side.",
       resumeTitle: "Resume",
       resumeDescription: "Download a short overview of my work history and skills.",
       resumeAction: "Download PDF",
-      linksTitle: "Stay in touch",
-      linksDescription:
-        "Pick the channel that suits you. I'm responsive and keep the chat focused on what you need.",
+      linksTitle: "Useful links",
       emailTitle: "Prefer email?",
-      emailDescription: "Drop me a line at laritsiuriumov@gmail.com and I'll reply within a day.",
+      emailDescription: "Text me at laritsiuriumov@gmail.com and I'll reply within a day.",
     },
+
+    // projects page
     projects: {
       badge: "Selected case studies",
       title: "Projects",
       description:
-        "A sample of platforms I've helped design, extend, and keep in good shape.",
+        "Platforms, Services I've helped design, extend, and keep in good shape.",
       caseBadge: "Case study",
       viewDetails: "View project details",
       backToProjects: "← Back to projects",
-      useCasesTitle: "Where it helped",
+
+      // usecases section
+      useCasesTitle: "Usecases",
       useCasesDescription: "What the product supports day to day.",
+
+      // achievements section
       achievementsTitle: "My contributions",
       achievementsDescription: "A snapshot of the work I owned.",
+
+      // role section
       roleTitle: "Role",
       roleDescription: "Scope and responsibilities.",
     },
+
+    // about page - tech stack section
     techStack: [
       {
         title: "Programming languages",
@@ -163,6 +184,8 @@ export const copy: Record<Language, Copy> = {
         ],
       },
     ],
+
+    // social links
     socialLinks,
   },
   ru: {
@@ -227,7 +250,6 @@ export const copy: Record<Language, Copy> = {
       resumeDescription: "Краткое описание опыта и навыков.",
       resumeAction: "Скачать PDF",
       linksTitle: "Связаться",
-      linksDescription: "Выберите удобный канал. Отвечаю быстро и по делу.",
       emailTitle: "Предпочитаете почту?",
       emailDescription: "Пишите на laritsiuriumov@gmail.com — отвечу в течение дня.",
     },
