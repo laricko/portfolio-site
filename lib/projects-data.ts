@@ -38,4 +38,4 @@ const shortProjects: { title: string; href: string; description: string }[] = [
   }
 ]
 
-export default shortProjects;
+export default shortProjects
