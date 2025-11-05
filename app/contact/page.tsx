@@ -17,25 +17,25 @@ import { Download, Github, Network, Send, Sigma } from "lucide-react"
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com/your-username",
+    href: "https://github.com/laricko",
     description: "Open-source projects, experiments, and community work.",
     icon: Github,
   },
   {
     name: "StackOverflow",
-    href: "https://stackoverflow.com/users/your-id",
+    href: "https://stackoverflow.com/users/14486187/larick",
     description: "Technical answers, Q&A contributions, and reputation milestones.",
     icon: Sigma,
   },
   {
     name: "Telegram",
-    href: "https://t.me/your-handle",
+    href: "https://t.me/regularsizedman",
     description: "Quickest way to reach me for collaborations or consulting.",
     icon: Send,
   },
   {
     name: "LeetCode",
-    href: "https://leetcode.com/your-username",
+    href: "https://leetcode.com/u/larick/",
     description: "Algorithmic problem solving and interview preparation streaks.",
     icon: Network,
   },
@@ -69,7 +69,7 @@ export default function Contact() {
         </CardHeader>
         <CardFooter className="justify-center gap-3">
           <Button asChild size="lg" className="gap-2">
-            <Link href="/resume.pdf" download>
+            <Link href="/Лари_Цюрюмов_резюме.pdf" download>
               <Download className="h-5 w-5" aria-hidden="true" />
               Download PDF
             </Link>
@@ -122,7 +122,7 @@ export default function Contact() {
             Drop me a message at
             <span className="font-medium text-foreground">
               {" "}
-              hello@yourdomain.com
+              laritsiuriumov@gmail.com
             </span>
             . I typically reply within one business day.
           </CardDescription>
