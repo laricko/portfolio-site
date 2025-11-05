@@ -4,6 +4,7 @@ type LocalizedString = Record<Language, string>
 type LocalizedList = Record<Language, string[]>
 
 type NavigationCopy = {
+  home: string
   projects: string
   about: string
   contact: string
@@ -484,6 +485,7 @@ const projects: ProjectData[] = [
 const copy: Record<Language, Copy> = {
   en: {
     navigation: {
+      home: "Home",
       projects: "Projects",
       about: "About",
       contact: "Contact",
@@ -644,6 +646,7 @@ const copy: Record<Language, Copy> = {
   },
   ru: {
     navigation: {
+      home: "Главная",
       projects: "Проекты",
       about: "Обо мне",
       contact: "Контакты",

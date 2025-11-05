@@ -39,6 +39,13 @@ export function Header() {
   return (
     <div className="flex w-full flex-wrap items-center gap-3">
       <NavigationMenu viewport={isMobile} className="flex-1">
+
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/">{copy.navigation.home}</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+
         <NavigationMenuList className="flex w-full flex-wrap items-center gap-2 justify-start">
           <NavigationMenuItem>
             <NavigationMenuTrigger href="/projects/">
