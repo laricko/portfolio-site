@@ -12,21 +12,19 @@ export const projects: ProjectData[] = [
       ru: "Внутренняя платформа для разработчиков, которая ведёт каталог сервисов и следит за их состоянием.",
     },
     overview: {
-      en: "I helped build an internal hub that maps every analytics microservice, tracks their health, and keeps scorecards up to date.",
+      en: "Fully my project: from idea to architecture, implementation, and launch. I built an internal hub that knows about every analytics microservice, tracks their health, and updates scores. And other tools that make life easier for developer teams.",
       ru: "Участвовал в создании внутреннего хаба: он знает о каждом аналитическом микросервисе, следит за их здоровьем и обновляет рейтинги.",
     },
     useCases: {
       en: [
         "Catalog of repositories and API schemas for the whole company",
-        "Service health tracking with uptime and metadata",
-        "Score formulas for projects, pages, queries, and clusters",
-        "Scheduled GitHub/GitLab integrations for fresh data",
-        "Dashboards and aggregations powered by ClickHouse",
-        "Redis caching for quick lookups",
+        "Creating mock endpoints for frontend development",
+        "Analyzing repository for microservices nodes",
+        "Assigning users to microservices based on their roles",
       ],
       ru: [
         "Каталог репозиториев и схем API для всей компании",
-        "Мониторинг состояния сервисов с аптаймом и метаданными",
+        "Создание мок-эндпоинтов для фронтенд-разработки",
         "Формулы рейтингов для проектов, страниц, запросов и кластеров",
         "Плановые интеграции с GitHub/GitLab для актуальных данных",
         "Дашборды и агрегации на ClickHouse",
@@ -35,11 +33,11 @@ export const projects: ProjectData[] = [
     },
     achievements: {
       en: [
-        "Led the Clean Architecture layout across core modules",
-        "Built GitHub App ingestion for indexing repositories and APIs",
-        "Delivered dashboard and scoring API endpoints",
-        "Modelled CTR and visibility formulas with filters",
-        "Coordinated async workers for periodic jobs",
+        "Fully designed Clean Architecture backend for core modules",
+        "Github App integration for repositories",
+        "Openai integration for analyzing microservices",
+        "User's dashboards and scoreboard endpoints",
+        "Organization, user, roles management logic",
         "Set up containerized services with CI/CD",
       ],
       ru: [
@@ -53,10 +51,8 @@ export const projects: ProjectData[] = [
     },
     myRole: {
       en: [
-        "Tech lead and backend architect",
+        "CEO and lead backend architect",
         "FastAPI services with async SQLAlchemy and Pydantic v2",
-        "ClickHouse schema design and Redis caching",
-        "Docker Compose setup and GitHub Actions pipelines",
       ],
       ru: [
         "Тимлид и архитектор бэкенда",
