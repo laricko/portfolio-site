@@ -37,69 +37,66 @@ export function Header() {
   }
 
   return (
-    <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex w-full flex-wrap items-center gap-2">
-        <NavigationMenuItem>
-          <NavigationMenuTrigger href="/projects/">
-            {copy.navigation.projects}
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {projects.map((project) => (
-                <ListItem key={project.slug} href={`/projects/${project.slug}`} title={project.title}>
-                  {project.summary}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+    <div className="flex w-full flex-wrap items-center gap-3">
+      <NavigationMenu viewport={isMobile} className="flex-1">
+        <NavigationMenuList className="flex w-full flex-wrap items-center gap-2 justify-start">
+          <NavigationMenuItem>
+            <NavigationMenuTrigger href="/projects/">
+              {copy.navigation.projects}
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                {projects.map((project) => (
+                  <ListItem key={project.slug} href={`/projects/${project.slug}`} title={project.title}>
+                    {project.summary}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/about">{copy.navigation.about}</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <Link href="/about">{copy.navigation.about}</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/contact">{copy.navigation.contact}</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <Link href="/contact">{copy.navigation.contact}</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
 
-        <NavigationMenuItem className="ml-auto flex flex-wrap items-center gap-3 rounded-md border px-3 py-2 text-sm">
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground">{copy.navigation.languageLabel}</span>
-            <Select value={language} onValueChange={handleLanguageChange}>
-              <SelectTrigger className="w-[140px]" aria-label={copy.navigation.languageLabel}>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="en">English</SelectItem>
-                <SelectItem value="ru">Русский</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground">{copy.navigation.themeLabel}</span>
-            <ToggleGroup
-              type="single"
-              value={theme}
-              onValueChange={handleThemeChange}
-              className="rounded-md border bg-background p-0"
-            >
-              <ToggleGroupItem value="light" aria-label={copy.navigation.light} className="gap-2 px-3 py-2 text-sm">
-                <Sun className="h-4 w-4" />
-                <span>{copy.navigation.light}</span>
-              </ToggleGroupItem>
-              <ToggleGroupItem value="dark" aria-label={copy.navigation.dark} className="gap-2 px-3 py-2 text-sm">
-                <Moon className="h-4 w-4" />
-                <span>{copy.navigation.dark}</span>
-              </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+      <div className="ml-auto flex flex-wrap items-center gap-3 text-sm">
+        <div className="flex items-center gap-2">
+          <span className="text-muted-foreground">{copy.navigation.languageLabel}</span>
+          <Select value={language} onValueChange={handleLanguageChange}>
+            <SelectTrigger className="w-[140px]" aria-label={copy.navigation.languageLabel}>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="en">English</SelectItem>
+              <SelectItem value="ru">Русский</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-muted-foreground">{copy.navigation.themeLabel}</span>
+          <ToggleGroup type="single" value={theme} onValueChange={handleThemeChange} className="bg-background p-0">
+            <ToggleGroupItem value="light" aria-label={copy.navigation.light} className="gap-2 px-3 py-2 text-sm">
+              <Sun className="h-4 w-4" />
+              <span>{copy.navigation.light}</span>
+            </ToggleGroupItem>
+            <ToggleGroupItem value="dark" aria-label={copy.navigation.dark} className="gap-2 px-3 py-2 text-sm">
+              <Moon className="h-4 w-4" />
+              <span>{copy.navigation.dark}</span>
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      </div>
+    </div>
   )
 }
 
