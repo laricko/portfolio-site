@@ -11,22 +11,23 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import projects from "@/lib/projects-data"
+import shortProjects from "@/lib/projects-data"
 
 function getProject(slug: string) {
-  return projects.find((project) => project.href.endsWith(slug))
+  return shortProjects.find((project) => project.href.endsWith(slug))
 }
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.href.split("/").pop()! }))
+  return shortProjects.map((project) => ({ slug: project.href.split("/").pop()! }))
 }
 
 type ProjectPageProps = {
   params: { slug: string }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProject(params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+  const project = getProject(slug)
 
   if (!project) {
     notFound()
